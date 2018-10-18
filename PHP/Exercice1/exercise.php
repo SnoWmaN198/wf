@@ -1,22 +1,22 @@
 <?php
 
-$booleanTrue;
-$booleanFalse;
+$booleanTrue = true;
+$booleanFalse = false;
 
-$int;
+$int = 42;
 
-$float;
+$float = 42.9;
 
-$integer;
+$integer = 57;
 
-$double;
+$double = 87.2;
 
-$string;
+$string = "OH fabio";
 
-$array;
+$array = ["Fabio", 28, "Likes SDM"];
 
-$doubleDimenssionArray;
+$doubleDimenssionArray = [[1],[2]];
 
-$associativeArray;
+$associativeArray = ["Fabio" => "27"];
 
-$null;
+$null = null;
