@@ -13,7 +13,7 @@ $double = 87.2;
 
 $string = "OH fabio";
 
-$array = ["Fabio", 28, "Likes SDM"];
+$array = ["Fabio", 27, "Likes SDM"];
 
 $doubleDimenssionArray = [[1],[2]];
 
