@@ -1,5 +1,7 @@
 <?php
 
+// namespace DimensionalMath\Vector (no need to put something infront of getVectorAngle when calling it in $angle)
+
 namespace Vector;
 
 function getVectorAngle($vectorA, $vectorB) {

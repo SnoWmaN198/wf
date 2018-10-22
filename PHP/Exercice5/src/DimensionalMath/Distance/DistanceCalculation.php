@@ -1,5 +1,7 @@
 <?php
 
+// namespace DimensionalMath\Distance  (no need to put something infront of threeDimensionDistance when calling it in $distance)
+
 namespace Distance;
 
 function subSquare($x, $y) {
