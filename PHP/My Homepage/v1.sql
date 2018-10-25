@@ -32,5 +32,4 @@ create table if not exists ProjectCategory(
     primary key (projectId, categoryId),
     foreign key (projectId) references Project(id),
     foreign key (categoryId) references Category(id)
-)engine=InnoDB
- 
+)engine=InnoDB; 
