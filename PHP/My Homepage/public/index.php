@@ -1,12 +1,24 @@
 <?php 
-    include __DIR__ . '/../Model/Articles.php';
-    include __DIR__ . '/../View/ArticlesList.php';
-?>
 
+    $config = include __DIR__ .'/../config/config.php';
+    require_once __DIR__ . '/../Model/Project.php';
+    
+    try {
+        $projects = getAllProjects();
+    } catch (Exception $e) {
+        echo 'An error occured with code : '.$e->getMessage();
+        exit;
+    }
+    
+    var_dump($projects->fetchAll());
 
-
-
-
-
-
-
+/*    
+-> go into config and return config
+-> require project.php
+        -> require connection.php
+            -> create a connection
+        -> define getAllProjects() function;
+-> call getAllProjects()
+        -> send a query
+        -> return the result;
+*/        
