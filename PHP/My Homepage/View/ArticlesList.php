@@ -30,7 +30,7 @@
         		    echo '<tr>';
         		    echo "<td><img src=' ".$article['img']."'/>"."</td>";
         		    echo "<td> ".$article['id']." </td>";
-        		    echo "<td> ".$article['pub_date']." </td>";
+        		    echo "<td> ".$article['pubDate']." </td>";
         		    echo "<td> ".$article['title']." </td>";
         		    echo "<td> ".$article['description']." </td>";
         		    echo '</tr>';
