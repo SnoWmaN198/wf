@@ -3,14 +3,14 @@ $title = 'Tag be sill registration';
 
 // error message display (view folder)
 
-$usernameError = '';
+$nicknameError = '';
 
 if (!empty($errors['username'])) {
-    $usernameError = '<ul class="alert alert-danger" role="alert">';
+    $nicknameError = '<ul class="alert alert-danger" role="alert">';
     foreach ($errors['username'] as $errorText) {
-        $usernameError .= '<li>' . $errorText . '</li>';
+        $nicknameError .= '<li>' . $errorText . '</li>';
     }
-    $usernameError .= '</ul>';
+    $nicknameError .= '</ul>';
 }
 
 $passwordError = '';
@@ -33,18 +33,25 @@ if (!empty($errors['password2'])) {
     $confirmError .= '</ul>';
 }
 
-$username = $_POST['username'] ?? '';
+$nickname = $_POST['nickname'] ?? '';
+
+if (isset($success) && $success) {
+    $success = '<p class="alert alert-success">Registration succesful</p>';
+} else {
+    $success = '';
+}
 
 // register form
 
 $content = <<<EOT
 <div class="container">
+  $success  
 <form method="POST">
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" value="$username" class="form-control" name="username" id="username">
+    <label for="nickname">Username</label>
+    <input type="text" value="$nickname" class="form-control" name="nickname" id="nickname">
     <small id="userHelp" class="form-text text-muted">Enter a username</small>
-    $usernameError
+    $nicknameError
   </div>
   <div class="form-group">
     <label for="password1">Password</label>

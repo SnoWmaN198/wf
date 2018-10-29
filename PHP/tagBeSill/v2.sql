@@ -6,7 +6,7 @@ create table if not exists Role(
     description BLOB NOT NULL
 )engine InnoDB;
 
-create table if not exists `User`(
+create table if not exists User(
 	id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nickname varchar(255) not null,
     `password` varchar(255) not null,
@@ -21,3 +21,8 @@ create table if not exists ProjectUser(
     FOREIGN KEY (projectId) REFERENCES Project(id),
     FOREIGN KEY (userId) REFERENCES `User`(id)
 )engine InnoDB;
+
+
+select * from User; 
+delete from User;
+ALTER TABLE User AUTO_INCREMENT = 0;    /* reset the ID to 0
