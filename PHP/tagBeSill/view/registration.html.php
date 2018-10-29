@@ -36,7 +36,7 @@ if (!empty($errors['password2'])) {
 $nickname = $_POST['nickname'] ?? '';
 
 if (isset($success) && $success) {
-    $success = '<p class="alert alert-success">Registration succesful</p>';
+    $success = '<p class="alert alert-success">Registration successful</p>';
 } else {
     $success = '';
 }

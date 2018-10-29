@@ -7,7 +7,7 @@ require_once __DIR__ . '/connection.php';
  * 
  * This function creates a new entry in the database and returns the id of the inserted element
  * 
- * @param string $username  The new entry for username
+ * @param string $nickname  The new entry for username
  * @param string $password  The new entry for password
 
  * @return int 
@@ -16,12 +16,41 @@ require_once __DIR__ . '/connection.php';
 function createUser(string $nickname, string $password, int $roleId = 1) : int {
 
     global $connection;
-    $query = "INSERT INTO User(nickname, `password`, roleId) VALUE ('$nickname', '$password', '$roleId')";
-    $user = $connection->exec($query);
     
-    if (!$user) {
+    
+    $query = 'INSERT INTO User(nickname, `password`, roleId) VALUE (:nickname, :password, :roleId)';
+    $stmt = $connection->prepare($query);
+    $stmt->bindValue('nickname', $nickname);
+    $stmt->bindValue('password', $password);
+    $stmt->bindValue('roleId', $roleId);
+    $result = $stmt->execute();
+    
+    if (!$result) {
         throw new RuntimeException(print_r($connection->errorInfo(), true));
     }
     
     return $connection->lastInsertId();
+}
+
+function getUser(string $nickname) : ?array {
+    
+    /**
+     * @var PDO $connection
+     */
+    
+    global $connection;
+    
+    $preparedQuery = $connection->prepare('SELECT * FROM User WHERE nickname = :name');
+    $preparedQuery->bindValue('name', $nickname);
+    $result = $preparedQuery->execute();
+    
+    if ($result === false) {
+        throw new RuntimeException(print_r($connection->errorInfo(), true));
+    }
+    
+    $result = $preparedQuery->fetch();
+    if ($result) {
+        return $result;
+    }
+    return null;
 }
