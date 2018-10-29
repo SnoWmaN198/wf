@@ -11,7 +11,10 @@ insert into `Status`(label, description) values
         
 insert into Project(title, description, image, publishingDate, statusId) values
 		('wf3pm', 'lorem', 'https://picsum.photos/80/80/?random', now(), 1),
-        ('Hots', 'lorem', 'https://picsum.photos/80/80/?random', now(), 3);
+        ('Hots', 'lorem', 'https://picsum.photos/80/80/?random', now(), 3),
+        ('Fit4Coding', 'lorem ipus dorem', 'https://picsum.photos/80/80/?random', now(), 2),
+        ('Fit', 'lorem ipus', 'https://picsum.photos/80/80/?random', now(), 4);
+        
         
 insert into ProjectCategory values
 		(1,1),

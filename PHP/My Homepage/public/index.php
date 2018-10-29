@@ -3,14 +3,15 @@
     $config = include __DIR__ .'/../config/config.php';
     require_once __DIR__ . '/../Model/Project.php';
     
+    
     try {
         $projects = getAllProjects();
     } catch (Exception $e) {
         echo 'An error occured with code : '.$e->getMessage();
         exit;
     }
-    
-    var_dump($projects->fetchAll());
+
+    require __DIR__ .  '/../View/homepage.html.php';
 
 /*    
 -> go into config and return config
