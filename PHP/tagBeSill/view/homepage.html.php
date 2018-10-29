@@ -1,6 +1,8 @@
 <?php
 $title = 'Tag be sill home page';
 
+// page display
+
 $content = '<div class="container">';
 $content .= '<div class="row">';
 

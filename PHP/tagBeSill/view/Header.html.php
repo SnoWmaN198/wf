@@ -16,6 +16,6 @@
 	<nav class="nav justify-content-center">
 	  <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/'){?>disabled<?php }?>" href="/">Home</a>
       <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/register.php'){?>disabled<?php }?>" href="/register.php">Register</a>
-      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/log'){?>disabled<?php }?>" href="#">Log in</a>
+      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/login.php'){?>disabled<?php }?>" href="#">Log in</a>
     </nav>
 </header>
