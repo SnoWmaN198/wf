@@ -67,10 +67,6 @@ function getUser(string $nickname) : ?array {
 
 function logInUser(array $user) : bool {
     
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-    
     $_SESSION['USER'] = $user;
     
     return true;
@@ -87,10 +83,6 @@ function logInUser(array $user) : bool {
 
 function getCurrentUser() : ?array {
     
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-    
     return $_SESSION['USER'] ?? null;
 }
 
@@ -104,10 +96,6 @@ function getCurrentUser() : ?array {
  */
 
 function logout() : bool {
-    
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();                                // used to start and select the current session
-    }
     
     $_SESSION = [];
     session_destroy();

@@ -14,6 +14,10 @@ if (substr($url, 0, strlen('/index.php')) == '/index.php') {
     $url = substr($url, strlen('/index.php'));
 }
 
+if (strpos($url, '?')) {
+    $url = substr($url, 0, strpos($url, '?'));
+}
+
 $config = include __DIR__ . '/../config/config.php';
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();

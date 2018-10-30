@@ -27,7 +27,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // link with the login form
 
 include __DIR__ . '/../view/login.html.php';
-
-if (session_status() === PHP_SESSION_ACTIVE) {
-    session_write_close();
-}
