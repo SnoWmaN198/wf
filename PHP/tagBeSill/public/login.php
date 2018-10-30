@@ -18,13 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     if ($user && $_POST['password'] == $user['password']) {
+        logInUser($user);
         $success = true;
     } else {
         $success = false;
     }
 }
 
-
 // link with the login form
 
 include __DIR__ . '/../view/login.html.php';
+
+if (session_status() === PHP_SESSION_ACTIVE) {
+    session_write_close();
+}

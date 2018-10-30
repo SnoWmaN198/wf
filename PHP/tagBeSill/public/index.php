@@ -22,6 +22,3 @@ include __DIR__ . '/../view/homepage.html.php';
     -> send a query
     -> return the result
 */
-
-
-

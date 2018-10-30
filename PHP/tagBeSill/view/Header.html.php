@@ -1,3 +1,9 @@
+<?php 
+
+$config = include __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../model/User.php';
+
+?>
 <header class="container mb-5">
 	<div class="row">
     	<div class="col-sm-3">
@@ -15,7 +21,11 @@
 	<hr>
 	<nav class="nav justify-content-center">
 	  <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/'){?>disabled<?php }?>" href="/">Home</a>
-      <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/register.php'){?>disabled<?php }?>" href="/register.php">Register</a>
+      <?php if (getCurrentUser() !== null) { ?>
+      	<a class="nav-link" href="/logout.php">Logout</a>
+      <?php } else { ?>
+      	<a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/register.php'){?>disabled<?php }?>" href="/register.php">Register</a>
       <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/login.php'){?>disabled<?php }?>" href="/login.php">Log in</a>
+      <?php } ?>
     </nav>
 </header>

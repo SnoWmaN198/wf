@@ -54,3 +54,64 @@ function getUser(string $nickname) : ?array {
     }
     return null;
 }
+
+/**
+ *
+ * Open a session for the user
+ * 
+ * User information will be stored in the session superglobal. Return true on success, false on failure
+ * 
+ * @param array $user
+ * @return bool
+ */
+
+function logInUser(array $user) : bool {
+    
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    
+    $_SESSION['USER'] = $user;
+    
+    return true;
+}
+
+/**
+ * 
+ * Get current user
+ * 
+ * Return the current logged user if exists in the session. If not, return null
+ * 
+ * @return array|NULL
+ */
+
+function getCurrentUser() : ?array {
+    
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    
+    return $_SESSION['USER'] ?? null;
+}
+
+/**
+ * 
+ * Logout 
+ * 
+ * Remove the session storage. Return true on success, false on failure
+ * 
+ * @return bool
+ */
+
+function logout() : bool {
+    
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();                                // used to start and select the current session
+    }
+    
+    $_SESSION = [];
+    session_destroy();
+    
+    return true;
+    
+}

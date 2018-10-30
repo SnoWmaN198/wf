@@ -75,6 +75,3 @@ EOT;
 
 
 include __DIR__ . '/Base.html.php';
-
-
-

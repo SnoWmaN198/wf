@@ -25,4 +25,4 @@ create table if not exists ProjectUser(
 
 select * from User; 
 delete from User;
-ALTER TABLE User AUTO_INCREMENT = 0;    /* reset the ID to 0
+ALTER TABLE User AUTO_INCREMENT = 0;    /* reset the Id to 0

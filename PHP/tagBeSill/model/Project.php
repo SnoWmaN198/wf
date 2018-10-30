@@ -27,4 +27,3 @@ function getAllProjects() {
 
     return $projects;
 }
-
