@@ -6,7 +6,8 @@ $routing = [
     $suffix . 'index.php' => ['/', ''],
     $suffix . 'register.php' => ['/register.php'],
     $suffix . 'login.php' => ['/login.php'],
-    $suffix . 'logout.php' => ['/logout.php']
+    $suffix . 'logout.php' => ['/logout.php'],
+    $suffix . 'addProject.php' => ['/add/project']
 ];
 
 $url = $_SERVER['REQUEST_URI'];

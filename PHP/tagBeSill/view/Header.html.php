@@ -21,6 +21,7 @@ require_once __DIR__ . '/../model/User.php';
 	<nav class="nav justify-content-center">
 	  <a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/'){?>disabled<?php }?>" href="/">Home</a>
       <?php if (getCurrentUser() !== null) { ?>
+        <a class="nav-link" href="/add/project">Create Project</a>
       	<a class="nav-link" href="/logout.php">Logout</a>
       <?php } else { ?>
       	<a class="nav-link <?php if ($_SERVER['REQUEST_URI'] == '/register.php'){?>disabled<?php }?>" href="/register.php">Register</a>
