@@ -60,3 +60,19 @@ create table if not exists GameMechanismus(
     foreign key (gameId) references Boardgames(id),
     foreign key (mechanismusId) references Mechanismus(id)
 ) engine InnoDB;
+
+INSERT INTO Category(label, description) VALUES
+	('Management', 'Lorem ipsum dolor sit amet'),
+	('ERP', 'Lorem ipsum dolor sit amet'),
+	('DMZ', 'Lorem ipsum dolor sit amet');
+    
+INSERT INTO Mechanismus(label, description) VALUES
+	('Multiplayer', 'Lorem ipsum dolor sit amet'),
+	('Solo', 'Lorem ipsum dolor sit amet'),
+	('Duo', 'Lorem ipsum dolor sit amet');
+    
+/*ALTER TABLE boardgames AUTO_INCREMENT = 0;
+select * from Boardgames;
+select * from designer;
+select * from publisher;
+drop database BoardgamesLibrary*/
