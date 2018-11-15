@@ -58,7 +58,7 @@ create table if not exists GameMechanismus(
     mechanismusId integer unsigned,
     primary key (gameId, mechanismusId),
     foreign key (gameId) references Boardgames(id),
-    foreign key (mechanismusId) references Mechanismus(id)
+    foreign key (mechanismusId) references Mechanismus(id)book
 ) engine InnoDB;
 
 INSERT INTO Category(label, description) VALUES
