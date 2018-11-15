@@ -2,64 +2,7 @@
 
 namespace Animal;
 
-class Cat {
-    
-    private const MAX_AGE = 25;
-    
-    private $breed;
-    private $color;
-    private $age;
-    
-    /**
-     * @return mixed
-     */
-    public function getBreed()
-    {
-        return $this->breed;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * @param mixed $breed
-     */
-    public function setBreed($breed)
-    {
-        $this->breed = $breed;
-        return $this;
-    }
-
-    /**
-     * @param mixed $color
-     */
-    public function setColor($color)
-    {
-        $this->color = $color;
-        return $this;
-    }
-
-    /**
-     * @param mixed $age
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-        return $this;
-    }
+class Cat extends Animal {
 
     public function saySomething() {
         return 'Miau!'; 
