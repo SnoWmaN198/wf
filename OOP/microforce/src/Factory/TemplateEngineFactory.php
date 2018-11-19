@@ -1,0 +1,26 @@
+<?php
+namespace MicroForce\Factory;
+
+use Symfony\Component\Templating\EngineInterface;
+use Symfony\Component\Templating\Loader\FilesystemLoader;
+use Symfony\Component\Templating\TemplateNameParser;
+
+class TemplateEngineFactory
+{
+    private $config = ['engine' => null, 'template_location' => null];
+    
+    public function __construct(string $engine, $templateLocation ) 
+    {
+        $this->config['engine'] = $engine;
+        $this->config['template_location'] = $templateLocation;
+    }
+    
+    public function createEngine() : EngineInterface 
+    {
+        $loader = new FilesystemLoader($this->config['template_location']);
+        
+        $engine = $this->config['engine'];
+        return new $engine(new TemplateNameParser(), $loader);
+    }
+}
+
