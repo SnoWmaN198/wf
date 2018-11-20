@@ -29,7 +29,7 @@ use MicroForce\Model\Room;
 						<td><?php for($i=0;$i<count($room->showRelation());$i++){
 						    
 						//each($room->showRelation() as $student){
-						    echo $room->showRelation()[$i]['firstname'].' '.$room->showRlation()[$i]['lastname'];
+						    echo $room->showRelation()[$i]['firstname'].' '.$room->showRelation()[$i]['lastname'];
 						    if($i<count($room->showRelation())-1){echo ' | ';}
 						}?></td>
 					</tr>
