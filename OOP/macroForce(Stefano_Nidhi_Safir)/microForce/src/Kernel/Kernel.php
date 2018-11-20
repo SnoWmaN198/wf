@@ -5,8 +5,8 @@ use Symfony\Component\Routing\RouteCollection;
 use MicroForce\Controller\HomepageController;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RequestContext;
-use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Templating\Loader\FilesystemLoader;
 use Symfony\Component\Templating\PhpEngine;
@@ -14,29 +14,34 @@ use Symfony\Component\Templating\TemplateNameParser;
 use MicroForce\Engine\EngineSingleton;
 use MicroForce\Connection\ConnectionSingleton;
 use MicroForce\Factory\TemplateEngineFactory;
-use MicroForce\Controller\RoomCapacityController;
+use MicroForce\Controller\RoomAccessController;
+
 
 class Kernel
 {
-    public function loadConnection(array $configuration) : \PDO 
-    {
-        return new \PDO
-        (sprintf(
+    public function loadConnection(array $configuration) : \PDO {
+        return new \PDO(
+            sprintf(
                 'mysql:host=%s;dbname=%s',
                 $configuration['host'],
                 $configuration['dbname']
-            ),
+                ),
             $configuration['user'],
-            $configuration['password'] 
-        );
+            $configuration['password']
+            );
     }
     
     public function loadTemplateEngine($config) : EngineInterface
     {
-        return (new TemplateEngineFactory($config['template_engine'], $config['template_location'] . '/%name%'))->createEngine();
+        $factory = new TemplateEngineFactory(
+            $config['template_engine'],
+            $config['template_location'].'/%name%'
+            );
+        
+        return $factory->createEngine();
     }
     
-    public function getConfig() 
+    public function getConfig()
     {
         return include __DIR__ . '/../../config/config.php';
     }
@@ -63,7 +68,7 @@ class Kernel
             $method = $routeDefinition['_method'];
             return $controller->$method();
         }
-
+        
         return '404';
     }
     
@@ -86,7 +91,7 @@ class Kernel
             return null;
         }
     }
-
+    
     private function loadRouting() : RouteCollection
     {
         // Create each routes
@@ -95,20 +100,20 @@ class Kernel
             [
                 '_controller' => HomepageController::class,
                 '_method' => 'homepage'
+                
             ]
-            );
-        
-        $roomCapacity = new Route(
+        );
+        $roomAccess = new Route(
             '/room',
             [
-                '_controller' => RoomCapacityController::class,
-                '_method' => 'RoomCapacity'
+                '_controller' => RoomAccessController::class,
+                '_method' => 'roomAccess'
             ]
-            );
+        );
         // Add them to the route collection
         $collection = new RouteCollection();
         $collection->add('homepage', $homepage);
-        $collection->add('RoomCapacity', $roomCapacity);
+        $collection->add('roomAccess', $roomAccess);
         // return the collection
         return $collection;
     }
