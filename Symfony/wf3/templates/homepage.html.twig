@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} homepage{% endblock %}
+
+{% block body %}
+	{{ dump(brandList) }}
+	{{ dump(modelList) }}
+
+    {% if cars is not defined %}
+    	{% set cars = [] %}
+    {% endif %}
+
+    {% for car in cars %}
+    	<div>
+    		<h2>{{ car.brand ~ ' - ' ~ car.getModel() }}</h2>
+    		<p>{{ car.color }}</p>
+    		<ul>
+                {% for seat in car.seats %}
+                	<li>{{ seat|title }}</li>
+                {% endfor %}
+    		</ul>
+    	</div>
+    {% else %}
+    	<p>No cars to display</p>
+    {% endfor %}
+{% endblock %}

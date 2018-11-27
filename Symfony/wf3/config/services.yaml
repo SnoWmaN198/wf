@@ -19,7 +19,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{DTO,Extractor,DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -29,3 +29,29 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    
+    app.property_accessor:
+        class: Symfony\Component\PropertyAccess\PropertyAccessor
+    
+    app.brand_extractor:
+        class: App\Extractor\DefaultExtractor
+        arguments: 
+            - 'App\DTO\Car'
+            - 'brand'
+            - '@app.property_accessor'
+        
+    app.model_extractor:
+        class: App\Extractor\DefaultExtractor 
+        arguments: 
+            - 'App\DTO\Car'
+            - 'model'
+            - '@app.property_accessor' 
+            
+    App\Controller\DefaultController:
+        class: App\Controller\DefaultController
+        arguments:
+            - '@twig'
+            - '@app.brand_extractor'
+            - '@app.model_extractor'
+        public: true                 
+      
