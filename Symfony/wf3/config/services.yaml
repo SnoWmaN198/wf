@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    app_version: 'V0.0.1-dev'
 
 services:
     # default configuration for services in *this* file
@@ -19,7 +20,7 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
-        exclude: '../src/{DTO,Extractor,DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+        exclude: '../src/{Force,Twig,DTO,Extractor,DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -53,5 +54,12 @@ services:
             - '@twig'
             - '@app.brand_extractor'
             - '@app.model_extractor'
-        public: true                 
+        public: true  
+        
+    App\Twig\CustomTwigExtension:
+        class: App\Twig\CustomTwigExtension
+        autowire: false
+        arguments: 
+            - '%app_version%'                                 # '@=container.hasParameter("app_version") ? container.getParameter("app_version") : "V1.0.0"' -> to check if version is availeable
+        tags: ['twig.extension']               
       

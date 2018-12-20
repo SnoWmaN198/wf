@@ -1,9 +1,41 @@
+*{
+	box-sizing: border-box;	
+}
+
 header{
 	background-color: lightgrey;
 }
+
 footer{
-   	position:absolute;
-   	bottom:0;
+   	position: absolute;
+   	display: flex;
+	justify-content: space-between;
+   	bottom: 0;
    	width: 100%;
 	background-color: lightgrey;
+}
+
+#car_form .form-group #car_form_color{
+	width: 30rem;
+}
+
+#car_form .form-group #car_form_model{
+	width: 30rem;
+}
+
+#car_form .form-group #car_form_brand{
+	width: 30rem;
+}
+
+#car_form .form-group #car_form_seats{
+	display: flex;
+}
+
+#car_form .form-group #car_form_seats .checkbox{
+	padding-right: 1rem;
+}
+
+.card{
+	border: 2px black solid;
+	border-radius: 8px;
 }
